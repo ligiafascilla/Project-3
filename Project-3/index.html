@@ -11,7 +11,23 @@
 <body>
     <h1>Shark Attacks Over Time</h1>
     <p>Explore the details of past shark attacks</p>
-    <div id="plot"></div>
-<!-- <script src="static/logic.js"></script> -->
+    
+    <div>
+        <label for="year-select">Filter by Year:</label>
+        <select id="year-select" onchange="filterData(this.value)">
+            <option value="">All</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="activity-select">Filter by Activity:</label>
+        <select id="activity-select" onchange="filterData()">
+            <option value="">All</option>
+        </select>
+    </div>
+
+    <div id="filtered-results"></div>
+
+    <script src="static/logic.js"></script>
 </body>
 </html>
