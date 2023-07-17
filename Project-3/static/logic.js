@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadDropdownValues('year-select', '/api/years');
-    loadDropdownValues('activity-select', '/api/activities');
+    loadDropdownValues('country-select', '/api/countries');
+    loadDropdownValues('type-select', '/api/types');
 });
 
 function loadDropdownValues(selectId, apiUrl) {
@@ -19,12 +20,13 @@ function loadDropdownValues(selectId, apiUrl) {
 }
 
 function filterData() {
-    var year = document.getElementById('year-select').value;
-    var activity = document.getElementById('activity-select').value;
+    var Year = document.getElementById('year-select').value;
+    var Country = document.getElementById('country-select').value;
+    var Type = document.getElementById('type-select').value;
     var filteredResults = document.getElementById('filtered-results');
 
     // Make an AJAX request to Flask with the selected filters
-    fetch('/api/filter?year=' + year + '&activity=' + activity)
+    fetch('/api/filter?Year=' + year + '&Country=' + country + '&Type=' + type)
         .then(response => response.json())
         .then(data => {
             // Clear previous results
@@ -38,4 +40,5 @@ function filterData() {
             });
         });
 }
+
 

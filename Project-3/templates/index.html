@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <h1>Shark Attacks Over Time</h1>
+    <p>Explore the details of past shark attacks</p>
+    
+    <div>
+        <label for="year-select">Filter by Year:</label>
+        <select id="year-select" onchange="filterData()">
+            <option value="">All</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="country-select">Filter by Country:</label>
+        <select id="country-select" onchange="filterData()">
+            <option value="">All</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="type-select">Filter by Type:</label>
+        <select id="type-select" onchange="filterData()">
+            <option value="">All</option>
+        </select>
+    </div>
+
+    <div id="filtered-results"></div>
+
+    <script src="static/logic.js"></script>
+</body>
+</html>
+

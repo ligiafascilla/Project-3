@@ -14,27 +14,34 @@ def main():
 
 @app.route('/api/years')
 def get_years():
-    query = "SELECT DISTINCT year FROM attacks"
+    query = 'SELECT DISTINCT "Year" FROM attacks'
     result = engine.execute(query)
     years = [row[0] for row in result]
     return jsonify(years)
 
-@app.route('/api/activities')
-def get_activities():
-    query = "SELECT DISTINCT activity FROM attacks"
+@app.route('/api/countries')
+def get_countries():
+    query = 'SELECT DISTINCT "Country" FROM attacks'
     result = engine.execute(query)
-    activities = [row[0] for row in result]
-    return jsonify(activities)
+    countries = [row[0] for row in result]
+    return jsonify(countries)
+
+@app.route('/api/types')
+def get_types():
+    query = 'SELECT DISTINCT "Type" FROM attacks'
+    result = engine.execute(query)
+    types = [row[0] for row in result]
+    return jsonify(types)
 
 @app.route('/api/filter')
 def filter_data():
-    year = request.args.get('year')
-    activity = request.args.get('activity')
+    year = request.args.get('Year')
+    country = request.args.get('Country')
+    type = request.args.get('Type')
 
-    query = "SELECT * FROM shark_attacks WHERE year = %s AND activity = %s"
-    result = engine.execute(query, (year, activity))
+    query = 'SELECT * FROM attacks WHERE "Year" = %s AND "Country" = %s AND "Type" = %s'
+    result = engine.execute(query, (year, country, type))
     data = [dict(row) for row in result]
-
     return jsonify(data)
 
 if __name__ == '__main__':
